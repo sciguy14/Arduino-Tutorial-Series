@@ -1,0 +1,9 @@
+%%[ ProductName: Distiller ]%%
+%%[ Error: ioerror; OffendingCommand: imageDistiller; ErrorInfo: DCTDecodeFilter Source error or end in scan 0 8x8 block 16386 ]%%
+
+Stack:
+-dict-
+
+
+%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%
+%%[ Warning: PostScript error. No PDF file produced. ] %%
