@@ -4,6 +4,7 @@
 //Some Code Adapted from http://www.cooking-hacks.com
 //Some code from arudino Tone Library: http://arduino.cc/en/Tutorial/Tone
 //Some code from my 5th Arduino Tutorial on Motor Control: http://jeremyblum.com/2011/01/31/arduino-tutorial-5-motors-and-transistors/
+//Code Updated on 1/21/2012 to comply with Arduino 1.0 Changes
 
 #include <Servo.h>
 #include "pitches.h"
@@ -34,22 +35,25 @@ Servo doorLock;
    
    // Setting Auto Read Mode - EM4102 Decoded Mode - No password
    // command: FF 01 09 87 01 03 02 00 10 20 30 40 37
-   Serial.print(0xFF,BYTE);  //Header
-   Serial.print(0x01,BYTE);  //Reserved
-   Serial.print(0x09,BYTE);  //Length (Command + Data)
-   Serial.print(0x87,BYTE);  //Command (0x87 sets auto mode behavior
-   Serial.print(0x01,BYTE);  //Data 1: Enable Auto-Read
-   Serial.print(0x03,BYTE);  //Data 2: Mode – Parity decoded – Manchester RF/64
-   Serial.print(0x02,BYTE);  //Data 3: Total number of block to be read (2)
-   Serial.print(0x00,BYTE);  //Data 4: No password expected
-   Serial.print(0x10,BYTE);  //Data 5: Password byte 1
-   Serial.print(0x20,BYTE);  //Data 6: Password byte 2
-   Serial.print(0x30,BYTE);  //Data 7: Password byte 3
-   Serial.print(0x40,BYTE);  //Data 8: Password byte 4
-   Serial.print(0x37,BYTE);  //Checksum
+   Serial.write(0xFF);  //Header
+   Serial.write(0x01);  //Reserved
+   Serial.write(0x09);  //Length (Command + Data)
+   Serial.write(0x87);  //Command (0x87 sets auto mode behavior
+   Serial.write(0x01);  //Data 1: Enable Auto-Read
+   Serial.write(0x03);  //Data 2: Mode – Parity decoded – Manchester RF/64
+   Serial.write(0x02);  //Data 3: Total number of block to be read (2)
+   Serial.write((byte)0x00);  //Data 4: No password expected
+   Serial.write(0x10);  //Data 5: Password byte 1
+   Serial.write(0x20);  //Data 6: Password byte 2
+   Serial.write(0x30);  //Data 7: Password byte 3
+   Serial.write(0x40);  //Data 8: Password byte 4
+   Serial.write(0x37);  //Checksum
    
    delay(500);
-   Serial.flush();
+   while(Serial.available()>0)
+   {
+     Serial.read();
+   }
    Serial.println();
    Serial.println("RFID module started in Auto Read Mode, Waiting for Card...");
  }
