@@ -16,8 +16,9 @@
 #include "SPI.h"
 
 //RGB LED Library
-//You can download it here: https://github.com/adafruit/WS2801-Library
-#include "WS2801.h"
+//You can download it here: https://github.com/adafruit/Adafruit-WS2801-Library/archive/master.zip
+//Install it in your library folder and restart the Arduino IDE
+#include "Adafruit_WS2801.h"
 
 //Analog Input Pins
 int left_channel = 0;
@@ -32,7 +33,7 @@ const int length = 50;
 const int half = length/2;
 
 //Library Setup
-WS2801 strip = WS2801(length, light_data, light_clk);
+Adafruit_WS2801 strip = Adafruit_WS2801(length, light_data, light_clk);
 
 //Set up arrays for cycling through all the pixels.  I'm assuming you have an even number of lights.
 uint32_t left_array[half];
