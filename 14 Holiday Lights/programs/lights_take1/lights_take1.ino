@@ -16,8 +16,9 @@
 #include "SPI.h"
 
 //RGB LED Library
-//You can download it here: https://github.com/adafruit/WS2801-Library
-#include "WS2801.h"
+//You can download it here: https://github.com/adafruit/Adafruit-WS2801-Library/archive/master.zip
+//Install it in your library folder and restart the Arduino IDE
+#include "Adafruit_WS2801.h"
 
 //Analog Input Pins
 int left_channel = 0;
@@ -28,7 +29,7 @@ int light_data = 3;
 int light_clk = 2;
 
 //Library Setup
-WS2801 strip = WS2801(50, light_data, light_clk);
+Adafruit_WS2801 strip = Adafruit_WS2801(50, light_data, light_clk);
 
 void setup()
 {
